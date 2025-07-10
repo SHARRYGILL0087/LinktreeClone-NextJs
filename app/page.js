@@ -1,103 +1,158 @@
+'use client'
+import Footer from "@/app/components/Footer";
+import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const { data: session } = useSession()
+  const router = useRouter()
+  const [link, setLink] = useState('linktr.ee/')
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+
+  const handleChange = (e) => {
+    const { value } = e.target
+    setLink(value)
+  }
+
+  const handleStart = () => {
+    router.push('/signup')
+  }
+
+  return (
+    <div>
+      <Navbar />
+      <main>
+        <section
+          className="bg-[url('/assets/bg.svg')] min-h-screen px-4 sm:px-8 md:px-12 flex flex-col items-center justify-center"
+        >
+          <div
+            className="flex flex-col w-full sm:w-3/4 md:w-1/2"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <h1
+              className="font-extrabold text-3xl sm:text-5xl md:text-7xl text-violet-400"
+            >Everything you are. In one, simple link in bio.
+            </h1>
+            <p
+              className="text-white mt-3 text-base sm:text-lg md:text-xl"
+            >
+              Join 70M+ people using Linktree for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center mt-8 gap-4">
+              <input type="text" onChange={handleChange} value={link} className="text-gray-400 bg-white text-base sm:text-lg md:text-xl w-full sm:w-1/2 rounded-lg px-4 py-3 sm:py-5 " />
+              <button
+                onClick={handleStart}
+                className="rounded-4xl py-3 sm:py-5 text-base sm:text-lg text-black font-medium bg-purple-600 w-full sm:w-1/3 mx-0 sm:mx-2 cursor-pointer "
+              >
+                Claim your Linktree
+              </button>
+            </div>
+          </div>
+        </section>
+        <section
+          className="bg-[url('/assets/bg1.svg')] min-h-screen px-4 sm:px-8 md:px-12 flex items-center justify-center"
+        >
+          <div
+            className="flex flex-col w-full sm:w-3/4 md:w-1/2"
           >
-            Read our docs
-          </a>
-        </div>
+            <h1
+              className="font-extrabold text-3xl sm:text-5xl md:text-7xl text-pink-400"
+            >Create and customize your Linktree in minutes
+            </h1>
+            <p
+              className="text-white mt-3 text-base sm:text-lg md:text-xl"
+            >
+              Connect your TikTok, Instagram, Twitter, website, store, videos, music, podcast, events and more. It all comes together in a link in bio landing page designed to convert.
+            </p>
+            <button
+              onClick={handleStart}
+              className="rounded-4xl mt-8 sm:mt-12 py-3 sm:py-5 text-base sm:text-lg text-black font-medium bg-pink-600 w-full sm:w-1/3 mx-0 sm:mx-2 cursor-pointer "
+            >
+              Get started for free
+            </button>
+          </div>
+        </section>
+        <section
+          className="bg-[url('/assets/bg2.svg')] min-h-screen px-4 sm:px-8 md:px-12 flex items-center justify-center"
+        >
+          <div
+            className="flex flex-col w-full sm:w-3/4 md:w-1/2"
+          >
+            <h1
+              className="font-extrabold text-3xl sm:text-5xl md:text-7xl text-yellow-400"
+            >Share your Linktree from your Instagram, TikTok, Twitter and other bios
+            </h1>
+            <p
+              className="text-white mt-3 text-base sm:text-lg md:text-xl"
+            >
+              Add your unique Linktree URL to all the platforms and places you find your audience. Then use your QR code to drive your offline traffic online.
+            </p>
+            <button
+              onClick={handleStart}
+              className="rounded-4xl mt-8 sm:mt-12 py-3 sm:py-5 text-base sm:text-lg text-black font-medium bg-green-200 w-full sm:w-1/3 mx-0 sm:mx-2 cursor-pointer "
+            >
+              Get started for free
+            </button>
+          </div>
+        </section>
+        <section
+          className="bg-[url('/assets/bg3.svg')] min-h-screen px-4 sm:px-8 md:px-12 flex items-center justify-center"
+        >
+          <div
+            className="flex flex-col w-full sm:w-3/4 md:w-1/2"
+          >
+            <h1
+              className="font-extrabold text-3xl sm:text-5xl md:text-7xl text-black"
+            >Analyze your audience and keep your followers engaged
+            </h1>
+            <p
+              className="text-black mt-3 text-base sm:text-lg md:text-xl"
+            >
+              Track your engagement over time, monitor revenue and learn what’s converting your audience. Make informed updates on the fly to keep them coming back.
+            </p>
+            <button
+              onClick={handleStart}
+              className="rounded-4xl mt-8 sm:mt-12 py-3 sm:py-5 text-base sm:text-lg text-black font-medium bg-red-200 w-full sm:w-1/3 mx-0 sm:mx-2 cursor-pointer "
+            >
+              Get started for free
+            </button>
+          </div>
+        </section>
+        <section
+          className="min-h-screen px-2 sm:px-8 md:px-12 flex flex-col lg:flex-row items-center justify-center gap-4 py-8 sm:py-16"
+        >
+          <div
+            className="flex flex-col h-full gap-7 w-full lg:w-auto"
+          >
+            <div
+              className="bg-pink-200 rounded-4xl px-4 sm:px-7 py-4 sm:py-8 w-full lg:w-[670px]"
+            >
+              <img src="/assets/img1.png" alt="img1" className="h-[120px] sm:h-[180px] w-full object-contain" />
+              <p className="text-xl sm:text-3xl mt-8 sm:mt-20 font-bold tracking-wide">Share your content in limitless ways in linktree.</p>
+            </div>
+            <div
+              className="bg-yellow-300 rounded-4xl px-4 sm:px-7 py-4 sm:py-8 w-full lg:w-[670px]"
+            >
+              <img src="/assets/img2.png" alt="img1" className="h-[150px] sm:h-[250px] w-full px-2 sm:px-6 object-contain" />
+              <p className="text-xl sm:text-3xl mt-8 sm:mt-20 font-bold tracking-wide">Sell products and collect payment. It's monetization made simple.</p>
+            </div>
+          </div>
+          <div
+            className="bg-blue-800 rounded-4xl px-4 sm:px-7 py-4 w-full lg:w-auto"
+          >
+            <img src="/assets/img3.png" alt="img1" className="h-[100px] sm:h-[70%] w-full px-2 sm:px-6 object-contain" />
+            <p className="text-xl sm:text-3xl mt-8 sm:mt-20 font-bold tracking-wide text-white">Grow, own and engaged your audience by unifying them in one place.</p>
+          </div>
+        </section>
+
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer link={link} handleChange={handleChange} handleStart={handleStart} />
     </div>
   );
 }
