@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import {logIn} from '@/lib/slices/loginSlice';
 import { ToastContainer, toast } from 'react-toastify'
+import Image from 'next/image';
 
 
 
@@ -65,7 +66,7 @@ const Login = () => {
 
   useEffect(() => {
     if (session) router.push('/')
-  }, [session])
+  }, [session,router])
 
 
   return (
@@ -133,11 +134,11 @@ const Login = () => {
         </div>
         <div className='mt-3'>
           <p className='flex gap-4 text-blue-500'><Link href={'#'}>forgot password?</Link>  <Link href={'#'}>Forgot Username?</Link></p>
-          <p className='text-center text-sm text-gray-600'>Don't have an account? <Link href={'/signup'} className='text-blue-500'>Sign up</Link> </p>
+          <p className='text-center text-sm text-gray-600'>{`Don't have an account? `}<Link href={'/signup'} className='text-blue-500'>Sign up</Link> </p>
         </div>
       </div>
       <div className='hidden w-0 md:block md:w-1/2'>
-        <img src="assets/loginImg.png" alt="LoginImg" className='w-full h-full object-cover' />
+        <Image width={500} height={300} src="/assets/loginImg.png" alt="LoginImg" className='w-full h-full object-cover' />
       </div>
     </div>
   )

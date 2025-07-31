@@ -133,20 +133,20 @@ export default function Home() {
             <div
               className="bg-pink-200 rounded-4xl px-4 sm:px-7 py-4 sm:py-8 w-full lg:w-[670px]"
             >
-              <img src="/assets/img1.png" alt="img1" className="h-[120px] sm:h-[180px] w-full object-contain" />
+              <Image src="/assets/img1.png" width={300} height={120} alt="img1" className="h-[120px] sm:h-[180px] w-full object-contain" />
               <p className="text-xl sm:text-3xl mt-8 sm:mt-20 font-bold tracking-wide">Share your content in limitless ways in linktree.</p>
             </div>
             <div
               className="bg-yellow-300 rounded-4xl px-4 sm:px-7 py-4 sm:py-8 w-full lg:w-[670px]"
             >
-              <img src="/assets/img2.png" alt="img1" className="h-[150px] sm:h-[250px] w-full px-2 sm:px-6 object-contain" />
-              <p className="text-xl sm:text-3xl mt-8 sm:mt-20 font-bold tracking-wide">Sell products and collect payment. It's monetization made simple.</p>
+              <Image width={300} height={120} src="/assets/img2.png" alt="img1" className="h-[150px] sm:h-[250px] w-full px-2 sm:px-6 object-contain" />
+              <p className="text-xl sm:text-3xl mt-8 sm:mt-20 font-bold tracking-wide">{`Sell products and collect payment. It's monetization made simple.`}</p>
             </div>
           </div>
           <div
             className="bg-blue-800 rounded-4xl px-4 sm:px-7 py-4 w-full lg:w-auto"
           >
-            <img src="/assets/img3.png" alt="img1" className="h-[100px] sm:h-[70%] w-full px-2 sm:px-6 object-contain" />
+            <Image width={300} height={100} src="/assets/img3.png" alt="img1" className="h-[100px] sm:h-[70%] w-full px-2 sm:px-6 object-contain" />
             <p className="text-xl sm:text-3xl mt-8 sm:mt-20 font-bold tracking-wide text-white">Grow, own and engaged your audience by unifying them in one place.</p>
           </div>
         </section>

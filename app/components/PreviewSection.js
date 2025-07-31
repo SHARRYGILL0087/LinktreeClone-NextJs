@@ -1,6 +1,7 @@
 import React from 'react'
+import Image from 'next/image';
 
-const PreviewSection = ({profile,validLinks ,handleSubmit}) => {
+const PreviewSection = ({ profile, validLinks, handleSubmit }) => {
     return (
         <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 overflow-y-auto">
             <div className="max-w-sm mx-auto text-center">
@@ -8,10 +9,13 @@ const PreviewSection = ({profile,validLinks ,handleSubmit}) => {
                 <div className="mb-8">
                     <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center overflow-hidden shadow-xl">
                         {profile.avatar ? (
-                            <img
+
+                            <Image
                                 src={profile.avatar}
                                 alt="Profile"
                                 className="w-full h-full object-cover"
+                                width={100}
+                                height={100}
                                 onError={(e) => {
                                     e.target.style.display = 'none';
                                     e.target.nextSibling.style.display = 'flex';

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 
 const LinkTreePreview = ({ data }) => {
   const { handle, avatar, description, links } = data;
@@ -15,9 +16,11 @@ const LinkTreePreview = ({ data }) => {
       ) : (
         <div className="max-w-md min-h-[500px] w-full bg-[#121212] rounded-2xl shadow-2xl p-6 text-white text-center space-y-6">
           {/* Avatar */}
-          <img
+          <Image
             src={avatar}
             alt={handle}
+            width={24}
+            height={24}
             className="w-24 h-24 mx-auto rounded-full border-4 border-gray-700 object-cover"
           />
 

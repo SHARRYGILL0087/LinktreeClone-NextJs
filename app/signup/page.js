@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from 'react-toastify'
+import Image from "next/image";
 
 
 const Signup = () => {
@@ -100,7 +101,7 @@ const Signup = () => {
         </form>
 
         <div>
-          <p className='text-gray-600 text-sm'>By clicking Create account, you agree to Linktree's <a href="3" className='underline'>privacy notice</a>, <a href="#" className='underline'>T&Cs</a></p>
+          <p className='text-gray-600 text-sm'>{`By clicking Create account, you agree to Linktree's `}<a href="3" className='underline'>privacy notice</a>, <a href="#" className='underline'>T&Cs</a></p>
           <p className='text-gray-600 text-sm text-center'>and to receive offers, news and updates.</p>
         </div>
 
@@ -108,8 +109,17 @@ const Signup = () => {
       </div>
 
       <div className='hidden w-0 md:block md:w-1/2'>
-        <img src="assets/signupImg.png" alt="SignupImg" className='w-full h-full object-cover' />
+        <Image width={500} height={400} src="/assets/signupImg.png" alt="SignupImg" className='w-full h-full object-cover' />
       </div>
+      {/* <div className='hidden w-0 md:block md:w-1/2'>
+        <Image
+          src="/assets/signupImg.png"
+          alt="SignupImg"
+          width={100} // Use the image's natural width
+          height={100} // Use the image's natural height
+          className='object-cover'
+        />
+      </div> */}
     </div>
   );
 };
