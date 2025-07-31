@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from 'react-toastify'
 
 
-const signup = () => {
+const Signup = () => {
   const router = useRouter();
   const [dataForm, setDataForm] = useState({
     firstname: "",
@@ -114,4 +114,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;

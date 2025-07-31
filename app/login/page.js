@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify'
 
 
 
-const login = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter()
   const { data: session } = useSession()
@@ -143,4 +143,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

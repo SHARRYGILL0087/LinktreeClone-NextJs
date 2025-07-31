@@ -9,7 +9,7 @@ import LinktreeSideBar from '../components/LinktreeSideBar';
 
 
 
-const generate = () => {
+const Generate = () => {
   const router = useRouter()
   const [showGeneratorPage, setShowGeneratorPage] = useState(true)
   const [showLinktreeSideBar, setshowLinktreeSideBar] = useState(false)
@@ -201,4 +201,4 @@ const generate = () => {
   );
 };
 
-export default generate;
+export default Generate;
