@@ -22,14 +22,14 @@ const Navbar = () => {
 
     return (
         <nav
-            className='bg-violet-200 fixed top-2 left-1/2 transform -translate-x-1/2 w-[99%] md:w-[85%] border border-gray-500 flex  items-center justify-between md:px-3 py-4 rounded-full shadow z-50'
+            className='bg-violet-200 fixed top-2 left-1/2 transform -translate-x-1/2 w-[96%] sm:w-[85%] border border-gray-500 flex  items-center justify-between md:px-3 py-3 sm:py-4 rounded-full shadow z-50'
         >
             <div
                 className='flex gap-14'
             >
-            <ToastContainer />
+                <ToastContainer />
                 <div className="logo">
-                   <span className='text-xl md:text-4xl font-sans tracking-wide md:mr-4'>Linktree</span>
+                    <span className='text-xl font-bold md:text-4xl font-sans tracking-wide md:mr-4'>Linktree</span>
                 </div>
 
                 <div className=' hidden lg:flex items-center gap-2 font-mono text-black'>
@@ -45,31 +45,37 @@ const Navbar = () => {
             >
 
                 {session || isLoggedIn ? (
-                    <>
-                        <Link href="/login">
-                            <button onClick={handleLogOut} className="font-semibold text-lg px-5 py-3 mx-3 rounded-lg bg-slate-100 cursor-pointer ">
-                                Log out
-                            </button>
-                        </Link>
-                        <button className="font-semibold text-lg w-[150px] py-3 mr-1 rounded-4xl text-white bg-gray-950 hover:bg-gray-900 cursor-pointer">
-                            <Link href="/generate">Go To Linktrees</Link>
+                    <div className='flex gap-2 '>
+                        <button onClick={handleLogOut} className="font-semibold  text-sm sm:text-lg px-5 py-1.5 sm:py-3 mx-3 rounded-lg bg-slate-100 cursor-pointer ">
+                            Log out
                         </button>
-                    </>
+                        <Link
+                            href="/generate"
+                            className="font-semibold text-sm sm:text-lg w-fit py-1.5 text-center sm:py-3 px-1 mr-1 rounded-4xl text-white bg-gray-950 hover:bg-gray-900 cursor-pointer"
+                        >
+                            Go To Linktrees
+                        </Link>
+                    </div>
                 ) : (
                     <>
-                        <button className="font-semibold text-lg px-5 py-3 rounded-lg bg-slate-100 cursor-pointer">
-                            <Link href="/login">Log in</Link>
-                        </button>
+                        <Link
+                            href="/login"
+                            className="font-semibold text-lg px-5 py-3 rounded-lg bg-slate-100 cursor-pointer"
+                        >
+                            Log in
+                        </Link>
 
-                        <button className="font-semibold text-lg w-[150px] py-3 mr-1 rounded-4xl text-white bg-gray-950 hover:bg-gray-900 cursor-pointer">
-                            <Link href="/signup">Sign up free</Link>
-                        </button>
+                        <Link href="/signup">
+                            <button className="font-semibold text-lg w-[150px] py-3 mr-1 rounded-4xl text-white bg-gray-950 hover:bg-gray-900 cursor-pointer">
+                                Sign up free
+                            </button>
+                        </Link>
                     </>
 
                 )}
 
             </div>
-        </nav>
+        </nav >
     )
 }
 

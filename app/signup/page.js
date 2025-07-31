@@ -48,7 +48,7 @@ const signup = () => {
       } else {
         const errorData = await res.json();
         // console.error("Signup error:", errorData.msg);
-        toast(errorData.msg.toString() || 'Email or username Already Exist')
+        toast(errorData.msg || 'Email or username Already Exist')
       }
     } catch (err) {
       // console.error("Signup error:", err.message);

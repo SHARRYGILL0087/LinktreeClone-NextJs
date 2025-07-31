@@ -9,14 +9,14 @@ export async function POST(request) {
 
     await ConnectDB();
 
-    const isExist = await User.findOne({
+    const isExist = await User?.findOne({
       $or: [
-                { email: email },
-                { username: username }
-            ]
+        { email: email },
+        { username: username }
+      ]
     })
-    if(isExist){
-    return NextResponse.json({ msg: "Email or Username Already exist" }, { status: 501 });
+    if (isExist) {
+      return NextResponse.json({ msg: "Email or Username Already exist" }, { status: 501 });
     }
 
     const user = new User({ firstname, lastname, username, email, password });
