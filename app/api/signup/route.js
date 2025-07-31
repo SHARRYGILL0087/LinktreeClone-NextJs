@@ -1,6 +1,7 @@
 import ConnectDB from "@/lib/mongodb";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
+import bcrypt from 'bcrypt'
 
 export async function POST(request) {
   try {
@@ -19,7 +20,13 @@ export async function POST(request) {
       return NextResponse.json({ msg: "Email or Username Already exist" }, { status: 501 });
     }
 
-    const user = new User({ firstname, lastname, username, email, password });
+    if (password.lenght < 8) {
+      return NextResponse.json({ msg: "Password should be of 8 characters" }, { status: 402 })
+    }
+
+    const hashPassword = await bcrypt.hash(password,10)
+
+    const user = new User({ firstname, lastname, username, email, password :  hashPassword });
     await user.save();
 
     return NextResponse.json({ msg: "User Created Successfully", user }, { status: 201 });

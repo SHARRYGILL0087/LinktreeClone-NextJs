@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 import ConnectDB from "@/lib/mongodb";
 import User from "@/models/User";
+import bcrypt from 'bcrypt'
 
 
 export async function POST(req) {
@@ -23,8 +24,10 @@ export async function POST(req) {
             return NextResponse.json({ msg: "User not found" }, { status: 404 });
         }
 
+        const isMatch = await bcrypt.compare(password,isExist.password)
 
-        if(isExist.password !== password){
+
+        if(!isMatch){
             return NextResponse.json({msg : "Incorrect Password"} , {status : 401})   
         }
 

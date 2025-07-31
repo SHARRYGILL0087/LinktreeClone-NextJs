@@ -65,10 +65,8 @@ const Navbar = () => {
                             Log in
                         </Link>
 
-                        <Link href="/signup">
-                            <button className="font-semibold text-lg w-[150px] py-3 mr-1 rounded-4xl text-white bg-gray-950 hover:bg-gray-900 cursor-pointer">
+                        <Link href="/signup" className="font-semibold text-lg w-[150px] py-3 px-1.5 sm:px-2.5 mr-1 rounded-lg text-white bg-gray-950 hover:bg-gray-900 cursor-pointer">
                                 Sign up free
-                            </button>
                         </Link>
                     </>
 
